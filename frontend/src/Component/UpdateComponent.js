@@ -14,7 +14,9 @@ const UpdateComponent = () => {
   }, []);
 
   const getProductDetails = async (req, res) => {
-    let result = await fetch(`http://localhost:5000/product/${param.id}`);
+    let result = await fetch(
+      `https://ecommerce-backend-2nlj.onrender.com/product/${param.id}`
+    );
     result = await result.json();
     console.log(result);
     setName(result.name);
@@ -24,13 +26,16 @@ const UpdateComponent = () => {
   };
 
   const updateProduct = async (req, res) => {
-    let result = await fetch(`http://localhost:5000/product/${param.id}`, {
-      method: "put",
-      body: JSON.stringify({ name, price, category, company }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
+    let result = await fetch(
+      `https://ecommerce-backend-2nlj.onrender.com/product/${param.id}`,
+      {
+        method: "put",
+        body: JSON.stringify({ name, price, category, company }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    );
     result = await result.json();
     if (result) {
       alert("Item updated successfully.");

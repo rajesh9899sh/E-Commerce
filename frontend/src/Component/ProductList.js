@@ -9,19 +9,25 @@ const ProductList = () => {
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch("http://localhost:5000/products", {
-      headers: {
-        authorization: JSON.parse(localStorage.getItem("token")),
-      },
-    });
+    let result = await fetch(
+      "https://ecommerce-backend-2nlj.onrender.com/products",
+      {
+        headers: {
+          authorization: JSON.parse(localStorage.getItem("token")),
+        },
+      }
+    );
     result = await result.json();
     setProducts(result);
   };
 
   const deleteProduct = async (id) => {
-    let result = await fetch(`http://localhost:5000/product/${id}`, {
-      method: "delete",
-    });
+    let result = await fetch(
+      `https://ecommerce-backend-2nlj.onrender.com/product/${id}`,
+      {
+        method: "delete",
+      }
+    );
     result = await result.json();
     if (result) {
       getProducts();
@@ -31,7 +37,9 @@ const ProductList = () => {
   const searchHandle = async (event) => {
     let key = event.target.value;
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`);
+      let result = await fetch(
+        `https://ecommerce-backend-2nlj.onrender.com/search/${key}`
+      );
       result = await result.json();
       if (result) {
         setProducts(result);

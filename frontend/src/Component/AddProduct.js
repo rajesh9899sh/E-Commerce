@@ -10,13 +10,16 @@ const AddProduct = () => {
 
   const addProduct = async () => {
     const userId = JSON.parse(localStorage.getItem("user"))._id;
-    let result = await fetch("http://localhost:5000/add-product", {
-      method: "post",
-      body: JSON.stringify({ name, price, category, company }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
+    let result = await fetch(
+      "https://ecommerce-backend-2nlj.onrender.com/add-product",
+      {
+        method: "post",
+        body: JSON.stringify({ name, price, category, company }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    );
     result = await result.json();
     if (result) {
       alert("Item added Successfully.");

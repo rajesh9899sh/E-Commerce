@@ -17,13 +17,16 @@ const SignUp = () => {
 
   const collectData = async () => {
     // console.log(name, email, password);
-    let result = await fetch("http://localhost:5000/signup", {
-      method: "POST",
-      body: JSON.stringify({ name, email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let result = await fetch(
+      "https://ecommerce-backend-2nlj.onrender.com/signup",
+      {
+        method: "POST",
+        body: JSON.stringify({ name, email, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     result = await result.json();
     // console.log(result);
     // It keeps the data in local storage first inspect then go to application then local storage shows.
